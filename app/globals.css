@@ -34,7 +34,7 @@ select:focus-visible {
   outline-offset: 3px;
 }
 
-.shell { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+.shell { width: min(1280px, calc(100% - 64px)); margin-inline: auto; }
 .skipLink {
   position: fixed;
   left: 20px;
@@ -56,7 +56,7 @@ select:focus-visible {
 }
 
 .hero {
-  min-height: 760px;
+  min-height: 780px;
   background: var(--ink);
   color: var(--paper);
   position: relative;
@@ -80,20 +80,20 @@ select:focus-visible {
 .navLinks a:hover { color: var(--paper); }
 .navLink { border-bottom: 1px solid var(--paper); padding-bottom: 4px; }
 .heroContent {
-  padding-block: clamp(78px, 9vw, 116px) 150px;
+  padding-block: clamp(60px, 7vw, 88px) 100px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
-  align-items: end;
-  gap: clamp(50px, 7vw, 92px);
+  grid-template-columns: minmax(0, 1.22fr) minmax(360px, .9fr);
+  align-items: center;
+  gap: clamp(54px, 6vw, 88px);
   position: relative;
   z-index: 1;
 }
 .heroContent > div > .eyebrow { margin-bottom: 24px; }
 .hero h1 {
-  max-width: 940px;
+  max-width: 790px;
   margin: 0;
-  font-size: clamp(68px, 9.5vw, 132px);
-  line-height: .8;
+  font-size: clamp(66px, 7.6vw, 106px);
+  line-height: .84;
   letter-spacing: -.075em;
   font-weight: 850;
 }
@@ -127,37 +127,125 @@ select:focus-visible {
 .primaryButton:hover,
 .secondaryButton:hover { transform: translate(-3px, -3px); box-shadow: 5px 5px 0 var(--orange); }
 .primaryButton span { font-size: 22px; }
-.heroProof {
-  border-top: 1px solid #ffffff3d;
-  border-bottom: 1px solid #ffffff3d;
-  padding-block: 20px;
+.compiler {
+  width: 100%;
+  border: 1px solid #ffffff38;
+  background: #1c1d17;
+  box-shadow: 14px 14px 0 #0c0d09;
+  font-family: var(--font-geist-mono), monospace;
 }
-.heroProof > p {
-  margin: 0 0 22px;
-  color: var(--acid);
-  font-size: 12px;
-  line-height: 1.45;
-  text-transform: uppercase;
-  letter-spacing: .12em;
+.compilerHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 17px 20px;
+  border-bottom: 1px solid #ffffff38;
+  color: var(--orange);
+  font-size: 10px;
   font-weight: 750;
+  letter-spacing: .13em;
+  text-transform: uppercase;
 }
-.heroProof dl { margin: 0; display: grid; gap: 13px; }
-.heroProof dl div { display: flex; justify-content: space-between; gap: 20px; }
-.heroProof dt { color: #82847b; font-size: 11px; text-transform: uppercase; letter-spacing: .09em; }
-.heroProof dd { margin: 0; color: var(--paper); font-size: 12px; text-align: right; }
+.compilerTrace {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 17px 20px 14px;
+}
+.compilerTrace::before {
+  content: "";
+  position: absolute;
+  left: 33px;
+  top: 31px;
+  bottom: 31px;
+  width: 1px;
+  background: var(--orange);
+}
+.compilerStep {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 14px;
+  min-height: 58px;
+}
+.compilerStep::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  left: 9px;
+  width: 9px;
+  height: 9px;
+  border: 2px solid #1c1d17;
+  background: var(--orange);
+  box-shadow: 0 0 0 1px var(--orange);
+}
+.compilerIndex {
+  padding-top: 10px;
+  color: #777970;
+  font-size: 9px;
+}
+.compilerStep > div {
+  display: grid;
+  gap: 4px;
+  padding: 9px 0 10px;
+  border-bottom: 1px solid #ffffff17;
+}
+.compilerLabel {
+  color: #8e9086;
+  font-size: 9px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.compilerStep strong {
+  color: var(--paper);
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.compilerStatus {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 17px 20px;
+  background: var(--acid);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.compilerStatus span {
+  width: 8px;
+  height: 14px;
+  background: var(--ink);
+  animation: compilerCursor 1s steps(1) infinite;
+}
+@keyframes compilerCursor { 50% { opacity: 0; } }
 .marquee {
   position: absolute;
-  bottom: -14px;
-  left: -2%;
-  width: 104%;
-  transform: rotate(-1.5deg);
+  bottom: -1px;
+  left: 0;
+  width: 100%;
   background: var(--orange);
   color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
-  border-block: 2px solid var(--ink);
+  border-top: 2px solid var(--ink);
 }
-.marquee div { font-size: 30px; font-weight: 900; letter-spacing: -.04em; padding: 13px; }
+.marquee::after {
+  content: "100%";
+  position: absolute;
+  top: 50%;
+  right: 32px;
+  transform: translateY(-50%);
+  padding-left: 16px;
+  border-left: 1px solid var(--ink);
+  font: 800 10px/1 var(--font-geist-mono), monospace;
+  letter-spacing: .08em;
+}
+.marquee div { font-size: 18px; font-weight: 900; letter-spacing: .04em; padding: 14px 32px; text-transform: uppercase; }
 
 .principles { padding: 132px 0 110px; background: var(--paper-deep); border-bottom: 1px solid var(--line); }
 .principlesIntro {
@@ -303,7 +391,11 @@ select:focus-visible {
 
 @media (max-width: 960px) {
   .heroContent { grid-template-columns: 1fr; align-items: start; }
-  .heroProof { max-width: 430px; }
+  .compiler { max-width: 720px; }
+  .compilerTrace { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
+  .compilerTrace::before { display: none; }
+  .compilerStep { border-left: 1px solid var(--orange); padding-left: 10px; }
+  .compilerStep::before { left: -5px; }
   .principlesIntro { grid-template-columns: 1fr 2fr; }
   .principlesIntro > p:last-child { grid-column: 2; }
   .courseGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -312,14 +404,19 @@ select:focus-visible {
 }
 
 @media (max-width: 680px) {
-  .shell { width: min(100% - 30px, 1180px); }
+  .shell { width: min(100% - 30px, 1280px); }
   .nav { min-height: 74px; }
   .navLinks > a:first-child { display: none; }
-  .hero { min-height: 720px; }
-  .heroContent { padding-block: 74px 120px; gap: 48px; }
+  .hero { min-height: 920px; }
+  .heroContent { padding-block: 64px 96px; gap: 44px; }
   .hero h1 { font-size: clamp(54px, 17vw, 76px); }
   .heroCopy { font-size: 16px; margin-top: 34px; }
-  .heroProof { width: 100%; }
+  .compiler { width: 100%; box-shadow: 8px 8px 0 #0c0d09; }
+  .compilerTrace { display: block; }
+  .compilerStep { border-left: 0; padding-left: 0; }
+  .compilerTrace::before { display: block; }
+  .compilerStep::before { left: 9px; }
+  .compilerStep strong { font-size: 12px; }
   .marquee div { font-size: 22px; }
   .principles { padding: 100px 0 80px; }
   .principlesIntro { grid-template-columns: 1fr; gap: 22px; margin-bottom: 44px; }

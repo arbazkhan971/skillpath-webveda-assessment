@@ -18,6 +18,14 @@ const principles = [
   },
 ];
 
+const compilerStages = [
+  { label: "Input", value: "I want to move forward" },
+  { label: "Resolve", value: "GET /assignment/course-data" },
+  { label: "Localize", value: "country_code → INR / USD" },
+  { label: "Practise", value: "Useful work, not passive watching" },
+  { label: "Output", value: "Visible proof of progress" },
+];
+
 export default function Home() {
   return (
     <main>
@@ -40,13 +48,23 @@ export default function Home() {
             <a className="primaryButton" href="#courses">Explore live courses <span aria-hidden="true">↘</span></a>
           </div>
 
-          <aside className="heroProof" aria-label="Platform details">
-            <p>Built around real API behaviour</p>
-            <dl>
-              <div><dt>Source</dt><dd>Live endpoint</dd></div>
-              <div><dt>Pricing</dt><dd>INR + USD</dd></div>
-              <div><dt>Recovery</dt><dd>Independent retry</dd></div>
-            </dl>
+          <aside className="compiler" aria-label="How Skillpath turns intent into progress">
+            <header className="compilerHeader">
+              <span>Skillpath compiler</span>
+              <span>Build 01</span>
+            </header>
+            <ol className="compilerTrace">
+              {compilerStages.map((stage, index) => (
+                <li className="compilerStep" key={stage.label}>
+                  <span className="compilerIndex" aria-hidden="true">0{index + 1}</span>
+                  <div>
+                    <span className="compilerLabel">{stage.label}</span>
+                    <strong>{stage.value}</strong>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <p className="compilerStatus"><span aria-hidden="true" />Build passed · Momentum +1</p>
           </aside>
         </div>
 
