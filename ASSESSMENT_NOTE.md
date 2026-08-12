@@ -2,12 +2,12 @@
 
 ## What I would fix with two more days
 
-I would first add tests for loading, failure and empty responses, because clicking retry again and again is not a real test plan. I would also remember the last valid country for a short time and clearly label the price as cached. Right now, if only the country call fails, I hide the prices instead of guessing INR or USD. It is less pretty, but I would rather show no price than the wrong one. I would also test the cards with longer real course names and spend time checking the page on a slower phone.
+I would add automated tests for loading, failure and empty responses, plus checks on slower phones and with longer course names. I would also cache the last valid country briefly and label cached prices clearly. Today, if the country call fails, I hide prices instead of guessing INR or USD.
 
 ## Where I got stuck / what I am not happy with
 
-The awkward case was when the courses load but the country does not. I kept the courses visible, disabled price sorting and added a separate retry for prices. The retry currently reloads both calls. It works and keeps the code easy to explain, but with more time I would let each request retry independently.
+The awkward case was courses loading while the country request failed. I kept the courses visible, disabled price sorting and offered a country retry. That retry currently reloads both requests; I would make each retry independently with more time.
 
 ## AI used
 
-I used OpenAI Codex to read the brief with me, draft the first version and question the failure cases. I rewrote the decisions around the country-call failure and reviewed the GET requests, paise/cents conversion, React cleanup and responsive breakpoints. I can explain every line I am submitting.
+I used OpenAI Codex to review the brief, challenge failure cases and build a local reference. I used Framer Agent for the page and component, then corrected its country parser and responsive-width logic after testing. I reviewed the requests, currency conversion, cleanup and breakpoints, and can explain every submitted line.
