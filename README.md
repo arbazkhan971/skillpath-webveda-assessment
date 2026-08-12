@@ -2,6 +2,10 @@
 
 A responsive learning-platform landing page and Framer code component built for the WebVeda junior developer assessment.
 
+**Live Framer assessment:** [multiple-clarity-766479.framer.app](https://multiple-clarity-766479.framer.app/)
+
+**GitHub repository:** [arbazkhan971/skillpath-webveda-assessment](https://github.com/arbazkhan971/skillpath-webveda-assessment)
+
 ## What is included
 
 - Live course data from the supplied API (never hardcoded)
