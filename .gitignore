@@ -38,3 +38,9 @@ yarn-error.log*
 /.wrangler/
 /outputs/
 /work/
+
+# Unused Sites starter persistence examples
+/db/
+/drizzle.config.ts
+/drizzle/
+/examples/
